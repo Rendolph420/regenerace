@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#101418">
-<title>Podívej se na tu fotku 😂</title>
-<meta name="description" content="Tohle musíš vidět 😂😂">
-<meta property="og:title" content="Podívej se na tu fotku 😂">
-<meta property="og:description" content="Tohle musíš vidět 😂😂">
+<title>🎰 100 free spinů zdarma!</title>
+<meta name="description" content="Kachní Kasino: vyzvedni si bonus 100 free spinů bez vkladu 🎁">
+<meta property="og:title" content="🎰 100 free spinů zdarma!">
+<meta property="og:description" content="Kachní Kasino: vyzvedni si bonus 100 free spinů bez vkladu 🎁">
 <meta property="og:type" content="website">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -15,12 +15,19 @@
   .screen { position: fixed; inset: 0; display: none; }
   .screen.on { display: flex; }
 
-  /* 1) návnada */
-  #start { background: #101418; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; }
-  #start .icon { font-size: 72px; margin-bottom: 18px; }
-  #start h1 { font-size: 20px; font-weight: 500; margin-bottom: 8px; }
-  #start p { color: #9aa4ad; font-size: 15px; margin-bottom: 30px; }
+  /* 1) návnada – smyšlené kasino */
+  #start { background: radial-gradient(circle at 50% 30%, #4b1d7a, #160628 70%); flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; }
+  #start .brand { font-size: 15px; font-weight: 800; letter-spacing: 3px; color: #ffd84d; margin-bottom: 22px; }
+  #start .icon { font-size: 84px; margin-bottom: 10px; animation: spinb 1.6s ease-in-out infinite; }
+  @keyframes spinb { 50% { transform: scale(1.12) rotate(-6deg); } }
+  #start h1 { font-size: clamp(38px, 13vw, 64px); font-weight: 900; line-height: 1; color: #ffd84d; text-shadow: 0 0 18px #ffb300, 0 3px 0 #b36b00; }
+  #start h2 { font-size: 20px; font-weight: 800; margin: 6px 0 14px; letter-spacing: 1px; }
+  #start p { color: #d9c7f0; font-size: 15px; margin-bottom: 28px; }
+  #start .timer { color: #ff6b6b; font-weight: 700; }
   .btn { background: #2f7df6; color: #fff; border: 0; border-radius: 24px; padding: 14px 36px; font-size: 16px; font-weight: 500; }
+  #go { background: linear-gradient(180deg, #ffe066, #ffab00); color: #3a1500; font-weight: 900; font-size: 18px; padding: 16px 40px; border-radius: 30px;
+        box-shadow: 0 0 24px rgba(255,200,0,.6); animation: pulse 1s ease-in-out infinite; }
+  @keyframes pulse { 50% { transform: scale(1.06); } }
 
   /* 2) blikání */
   #flicker { background: #fff; }
@@ -66,10 +73,12 @@
 <body>
 
 <div id="start" class="screen on">
-  <div class="icon">🖼️</div>
-  <h1>Někdo s vámi sdílel fotku</h1>
-  <p>Klepnutím ji zobrazíte</p>
-  <button class="btn" id="go">Zobrazit fotku</button>
+  <div class="brand">🦆 KACHNÍ KASINO</div>
+  <div class="icon">🎰</div>
+  <h1>100 FREE<br>SPINŮ</h1>
+  <h2>ZDARMA · BEZ VKLADU</h2>
+  <p>Bonus pro tebe vyprší za <span class="timer" id="tm">04:59</span></p>
+  <button class="btn" id="go">VYZVEDNOUT BONUS</button>
 </div>
 
 <div id="flicker" class="screen"></div>
@@ -203,6 +212,7 @@ async function run() {
 }
 
 $('go').onclick = run;
+let left = 299; setInterval(() => { if (left > 0) left--; $('tm').textContent = String(left / 60 | 0).padStart(2, '0') + ':' + String(left % 60).padStart(2, '0'); }, 1000);
 $('again').onclick = run;
 </script>
 </body>
